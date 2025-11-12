@@ -1,0 +1,166 @@
+Simu_Para:
+  # Path
+  figure_path : './results/figure/'                                         # 存储图像路径
+  result_path : './results/infor/'                                          # 存储结果路径
+  save_data_path: './results/data/'                                         # 存储数据路径
+  # sam_rate
+  awg_memory_depth: 262144                                                                    # AWG存储深度（默认262144,2的整数次幂,不能少于2^17=131072）
+  tx_sam_rate: 80                                                                             # AWG采样速率（GSam/Sec）
+  rx_sam_rate: 100                                                                            # 示波器采样速率（GSam/Sec）
+  # expriments information
+  sym_rate: 30                                                                                # 信号波特率（GHz）
+  bits_per_sym: 4                                                                             # 单符号比特数
+  nPol: 2                                                                                     # 偏振个数（固定为2）
+  sig_power_dbm : 4.0                                                                           # 入纤光功率（dbm）
+  channel_num : 1                                                                             # WDM通道数 
+  # control for sig, tx, rx
+  # sig
+  modulation : 1                                                                              # 调制开关（固定为1）
+  demodulation : 1                                                                            # 解调开关（固定为1）
+  # tx
+  pulse_shaping: 1                                                                            # 脉冲成型开关（固定为1）
+  # ch
+  dac : 1                                                                                     # 通道重采样开关（1 - 开，0 - 关）
+  wss : 1                                                                                     # 波长选择开关（固定为1 - 开）
+  channel_type : 1                                                                            # 信道类型（1 - 仿真光纤信道, 2 - AWGN信道）
+  span_num: 13                                                                                # Span数量                                         
+  load_len: 0                                                                                 # 是否加载光纤设置（1: 加载设置 0: 设置固定span_len）
+  span_len : 80                                                                               # 单段光纤长度（km）                                    
+  total_len : 160                                                                             # 光纤总长度（km） 
+  channel_space : 50                                                                          # WDM通道间隔（GHz）
+  receiver : 1                                                                                # 接收端ICR开关（1 - 开，0 - 关）
+  adc : 1                                                                                     # 接收端示波器开关（1 - 开，0 - 关）
+  # rx
+  lpf : 1                                                                                     # 低通滤波器开关（1 - 开，0 - 关）
+  iq_balance: 1                                                                               # IQ平衡开关（1 - 开，0 - 关）
+  cdcom : 1                                                                                   # 色散补偿开关（1 - 开，0 - 关）
+  mimo : 1                                                                                    # MIMO开关（1 - 开，0 - 关）
+  synchronization : 1                                                                         # 同步定帧开关（1 - 开，0 - 关）
+  cpe : 1                                                                                     # 相位恢复开关（1 - 开，0 - 关）
+  # Others
+  modulation_list : {'2': 'QPSK', '3': '8QAM', '4': '16QAM', '5':'32QAM', '6': '64QAM'}       # 调制方式列表（按需要添加）
+  caclu_with_gpu : 1                                                                          # 需要GPU计算（1 - 是，0 - 否）
+  device: "cuda:3"                                                                            # CUDA设备选择
+  infor_print_arr : [1, 0, 1, 1]                                                              # 需要输出仿真信息（1 - 是，0 - 否），1-4位分别对应信号、发端、信道、收端
+  fig_plot_arr : [0, 0, 0, 1]                                                                 # 需要输出图片信息（1 - 是，0 - 否），1-4位分别对应信号、发端、信道、收端
+  save_data_arr : [0, 0, 0, 0]                                                                # 需要存储数据（1 - 是，0 - 否），1-4位分别对应信号、发端、信道、收端                             
+
+Sig_Para:
+  bit_load : 0                                                                                # 是否读入已有比特序列（1 - 是，0 - 否）
+  front_sym_num: 2048                                                                         # 信号前后填充数
+  # demodulation configuration
+  demod_config:
+    mode: 'llr' # 'bit', 'int', 'llr', or 'approxllr'                                         # 解调模式列表
+    data_mode: 'numpy'                                                                        # 数据格式
+
+
+Ch_Para:
+  ch_random: 0                                                                                # 需要控制信道随机效应及噪声（1 - 是，0 - 否）
+
+  wss_config:
+    filter_type: 'brickwall_filter'                                                           # 波分复用及解复用过程使用的滤波器类型（'brickwall_filter' , 'wss_filter')
+    args: {}                                                                                  # 滤波器配置参数
+  
+  edfa_config:
+    mode: 'naive_pass'                                                                        # EDFA模式（EDFA模式（'no_noise_pass' - 仅放大信号，'naive_pass' - 放大信号同时添加ASE噪声，'only_noise_pass' - 仅添加ASE噪声，用于BiLSTM仿真信道传输））
+    nf_db: 5                                                                                  # EDFA噪声系数（dB）,默认值5
+      
+  icr_config:
+    args:
+      add_noise: 0                                                                            # 是否添加ICR噪声（1 - 是，0 - 否）
+      n_power_dBm: -18.6751                                                                   # ICR噪声功率（dBm），参考值-20.6751,-21.6751,-21.7
+  
+  awgn_config:
+    snr_db : 13
+
+  fiber_config:
+    len_config_path: './span_len.yml'   # 链路长度配置路径，load_len=1需配置此参数
+    # CD
+    D: 17                                                                                     # 色散系数（ps/(nm.km)），默认值 17 
+    S: 0                                                                                      # 色散斜率（ps/(nm^2.km)），默认值0.075  
+    pmd: 1                                                                                    # PMD效应仿真开关（1 - 开，0 - 关）
+    # Loss
+    alpha_inndB: 0.2                                                                          # 光纤链路损耗系数（dB/km），默认值0.2
+    # Kerr Nonlinearity
+    n2: 2.6e-20                                                                               # 非线性折射率系数（m^2/W）
+    Aeff: 80                                                                                  # 有效面积（μm^2）
+    # model algorithm
+    mode: 'SSFM'                                                                              # 光纤信道仿真模式（'SSFM' - 分布傅里叶法, 'NN' - AI信道模型） 
+    nn_model: 'GAN2'                                                                          # AI信道模型类型（'GAN1','GAN2'）,信道仿真模式为'NN'时需要设置此参数
+    args:
+      step_config:
+        dz_mode: 'np'                                                                         # SSFM步长计算方式（'c' - 恒定步长，'np' - 最大非线性旋转计算步长，'log' - 对数分布步长，'np_log' - 结合非线性相移及对数分布）
+        dphimax: 0.005                                                                        # SSFM每步最大非线性相位旋转（rad）,dz_mode='np'、np_log'需设置，默认值0.005
+        constant_step_size: 0.01                                                              # 步长大小（km），dz_mode='c'时需设置
+        total_step_num: 1000                                                                  # 一个跨段总步数，dz_mode='log'、'np_log'需设置
+      
+      pmd_config:
+        dgd_manual: 1                                                                         # 是否设定一个跨段总差分群时延大小（1 - 是，0 - 否）
+        dgd_total: 0.2                                                                        # 单跨段差分群时延（ps），dgd_manual=1需设置此参数
+        psp_manual: 1                                                                         # 是否固定两个trunk之间主偏振态的旋转角度（1 - 是，0 - 否）,为1则角度为固定值pi/4
+        pmd_coeff_random: 0                                                                   # 每个trunk的pmd系数是否随机（1 - 是，0 - 否）
+        pmd_dz_random: 0                                                                      # 各trunk长度是否随机（1 - 是，0 - 否），为0时各trunk等长
+        pmd_coeff: 0.05                                                                       # 单个跨段的pmd系数（ps.km^(-1/2)），dgd_manual=0需设置此参数，默认值0.05
+        pmd_trunk_num: 80                                                                     # 单个跨段的trunk数目，默认值80
+        
+Tx_Para:
+  pulse_shaping_config:
+    type: 'rrc'                                                                               # 整形滤波器类型
+    args:
+      upsam: 4                                                                                # 上采样采样率
+      roll_off: 0.1                                                                           # 滚降系数
+  
+Rx_Para:                                                                                                         
+  frame_num: 1                                                                                # 信号帧数
+  
+  lpf_config:                                                                                 # 低通滤波器配置
+    mode: 'brickwall' # brickwall, bessel, butter, gaussian, rc, rrc                          # 滤波器种类
+    args:
+      roll_off: 0.1                                                                           # 滚降系数
+      max_lofo: 0.5   # GHz                                                                   # 信号最大频偏
+      comp_s21: 0                                                                             # 是否引入ICR补偿（1 - 是，0 - 否）
+    
+  iq_balance_config:                                                                          # IQ平衡配置
+    type: 'GSOP'                                                                              # Gram-Schmidt正交化
+
+  cd_com_config:                                                                              # 色散补偿配置
+    type: 'FD_2x2'                                                                            # 频域双输入双输出
+    # sam_per_sym: 2
+    args:
+      cdc_length: 'auto'
+      cut_idx: 0                                                                              # 数值范围为 0 至（通道数-1)
+    
+  mimo_config:                                                                                # MIMO配置
+    mode: 'TD_2x2'                                                                            # 时域双输入双输出
+    half_taps_num: 40                                                                         # 半抽头数目
+    out_sym_num: 1                                                                            # 每次输出符号数目
+    upsam: 2                                                                                  # 上采样率
+    block_size: 64                                                                            # 滤波器块大小
+    err_calcu: 'mean' # mean, individual                                                      # 误差计算方式
+    data_mode: 'numpy' # numpy, tensor                                                        # 数据类型
+    args:
+      algo_type: 'mma' # mma, cma                                                             # 自适应滤波算法
+      h_ortho: 0                                                                              # 是否进行滤波器正交化（1 - 是，0 - 否）
+      tap_init_mode: 1                                                                        # 抽头初始化模式
+      tap_init_value: 0.5                                                                     # 抽头初始化数值
+      radius_idx: 1                                                                           # cma算法限制半径索引
+      cma_pretrain: 1                                                                         # 是否使用cma算法预训练（1 - 是，0 - 否）
+      pre_train_iter: 2                                                                       # 预训练批次训练次数
+      # train_num: 4060
+      train_epoch: 8                                                                          # 训练迭代次数
+      lr: 2.5e-4                                                                              # 训练学习率
+
+  cpe_config:                                                                                 # 载波相位估计配置
+    mode: 'coarse'                                                                            # 粗估计模式
+    block_num: 1024        # block implementation is not supported                            # 信号分块数量
+    parallel: 64                                                                              # 并行数量
+    window_size: 31                                                                           # 滑窗长度
+    data_mode: 'numpy'                                                                        # 数据类型
+    args:
+      data_aided: 1                                                                           # 是否使用发端信号辅助求解相偏（1 - 是，0 - 否）
+
+  synchron_config:                                                                            # 同步定帧配置
+    mode: '4x4'                                                                               # 四路输入四路输出
+    corr_num: 256                                                                             # 同步字长度
+    data_mode: 'numpy'                                                                        # 数据类型
+    args: {}

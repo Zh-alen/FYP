@@ -1,0 +1,80 @@
+Data Parameters
+-----------------------------------------------
+rand_seed:20
+code_path:empty_value
+tx_data_path:empty_value
+rx_data_path:empty_value
+awg_memory_depth:262144
+tx_sam_rate:80
+rx_sam_rate:100
+tx_load_data:0
+rx_load_data:0
+sym_rate:30
+bits_per_sym:4
+nPol:2
+sig_power_dbm:4.0
+channel_num:1
+modulation:1
+demodulation:1
+pulse_shaping:1
+dac:1
+transmitter:0
+wss:1
+channel_type:1
+span_num:13
+channel_space:50
+load_len:0
+span_len:80
+total_len:160
+cut_idx:0
+receiver:1
+adc:1
+lpf:1
+cdcom:1
+mimo:1
+synchronization:1
+cpe:1
+result_path:./results/infor/
+figure_path:./results/figure/
+save_data_path:./results/data/
+ch_sam_rate:120
+ch_fft_num:393216
+rx_fft_num:327680
+class_num:16
+up_sam:2.6666666666666665
+bit_num_per_pol:393216
+modulation_list:{'2': 'QPSK', '3': '8QAM', '4': '16QAM', '5': '32QAM', '6': '64QAM'}
+modulation_type:16QAM
+data_mode:fine_tune
+caclu_with_gpu:1
+device:cpu
+fig_plot_arr:[0, 0, 0, 1]
+infor_print_arr:[1, 0, 1, 1]
+save_data_arr:[0, 0, 0, 0]
+q_factor:[0. 0. 0.]
+front_sym_num:2048
+padding_num:4096
+bit_num:786432
+sym_num:196608
+sym_num_wo_padding:94208
+sym_num_per_pol:98304
+sig_power_w:0.0025118864315095794
+bit_rate:120
+infor_print:0
+fig_plot:0
+save_data:0
+sig_data_mode:numpy
+bit_load:0
+random_type:MT19937
+coding:0
+modu:qam
+geometric_shaping:0
+demod_config:{'mode': 'llr', 'data_mode': 'numpy', 'order': 16, 'device': device(type='cpu')}
+demod_obj:<IFTS.fiber_simulation.sig.modulation.demod_design.QAMDemod object at 0x000001CAC6F13610>
+sam_rate:80
+dt:12.5
+fft_num:262144
+tx_data_mode:tensor
+pulse_shaping_config:{'type': 'rrc', 'args': {'upsam': 4, 'roll_off': 0.1, 'sam_rate': 120, 'cut_off': 30, 'beta': 0.1}}
+ps_obj:<IFTS.fiber_simulation.comm_tools.filter_design.filter_design.Digital_filter_para_freq object at 0x000001CAC6F13760>
+signal_bw:16.5

@@ -1,0 +1,68 @@
+figure_path: ./results/figure/
+result_path: ./results/infor/
+save_data_path: ./results/data/
+awg_memory_depth: 262144
+tx_sam_rate: 80
+rx_sam_rate: 100
+sym_rate: 30
+bits_per_sym: 4
+nPol: 2
+sig_power_dbm: 4.0
+channel_num: 1
+modulation: 1
+demodulation: 1
+pulse_shaping: 1
+dac: 1
+wss: 1
+channel_type: 1
+span_num: 13
+load_len: 0
+span_len: 80
+total_len: 160
+channel_space: 50
+receiver: 1
+adc: 1
+lpf: 1
+iq_balance: 1
+cdcom: 1
+mimo: 1
+synchronization: 1
+cpe: 1
+modulation_list:
+  '2': QPSK
+  '3': 8QAM
+  '4': 16QAM
+  '5': 32QAM
+  '6': 64QAM
+caclu_with_gpu: 1
+device: cuda:3
+infor_print_arr:
+- 1
+- 0
+- 1
+- 1
+fig_plot_arr:
+- 0
+- 0
+- 0
+- 1
+save_data_arr:
+- 0
+- 0
+- 0
+- 0
+code_path: empty_value
+tx_data_path: empty_value
+rx_data_path: empty_value
+tx_load_data: 0
+rx_load_data: 0
+transmitter: 0
+cut_idx: 0
+ch_sam_rate: 120
+ch_fft_num: 393216
+rx_fft_num: 327680
+class_num: 16
+up_sam: 2.6666666666666665
+bit_num_per_pol: 393216
+modulation_type: 16QAM
+data_mode: fine_tune

@@ -1,0 +1,75 @@
+frame_num: 1
+lpf_config:
+  mode: brickwall
+  args:
+    roll_off: 0.1
+    max_lofo: 0.5
+    comp_s21: 0
+    filter_bw: 17.0
+    cut_off: 17.0
+    s21_bw: 17.0
+    s21_path: null
+  sam_rate: 100
+  fft_num: 327680
+  data_mode: tensor
+  device: &id001 !!python/object/apply:torch.device
+  - cpu
+iq_balance_config:
+  type: GSOP
+cd_com_config:
+  type: FD_2x2
+  args:
+    cdc_length: 160
+    cut_idx: 0
+  sam_per_sym: 2
+mimo_config:
+  mode: TD_2x2
+  half_taps_num: 40
+  out_sym_num: 1
+  upsam: 2
+  block_size: 64
+  err_calcu: mean
+  data_mode: numpy
+  args:
+    algo_type: mma
+    h_ortho: 0
+    tap_init_mode: 1
+    tap_init_value: 0.5
+    radius_idx: 1
+    cma_pretrain: 1
+    pre_train_iter: 2
+    train_epoch: 8
+    lr: 0.00025
+    upsam: 2
+    train_num: 81920
+    sam_num: 196608
+  lr_optim: constant
+  device: *id001
+  infor_print: 1
+cpe_config:
+  mode: coarse
+  block_num: 1024
+  parallel: 64
+  window_size: 31
+  data_mode: numpy
+  args:
+    data_aided: 1
+  sym_rate: 30
+  parallelism: 1
+  infor_print: 1
+  device: *id001
+synchron_config:
+  mode: 4x4
+  corr_num: 256
+  data_mode: numpy
+  args: {}
+  frame_num: 1
+  frame_size: 98304
+  device: *id001
+rx_fft_num: 327680
+lpf: 1
+iq_balance: 1
+cdcom: 1
+mimo: 1
+cpe: 1
+synchronization: 1

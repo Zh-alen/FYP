@@ -1,0 +1,10 @@
+pulse_shaping_config:
+  type: rrc
+  args:
+    upsam: 4
+    roll_off: 0.1
+    sam_rate: 120
+    cut_off: 30
+    beta: 0.1
+awg_memory_depth: 262144
+pulse_shaping: 1

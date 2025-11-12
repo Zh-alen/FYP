@@ -1,0 +1,109 @@
+Data Parameters
+-----------------------------------------------
+rand_seed:20
+code_path:empty_value
+tx_data_path:empty_value
+rx_data_path:empty_value
+awg_memory_depth:262144
+tx_sam_rate:80
+rx_sam_rate:100
+tx_load_data:0
+rx_load_data:0
+sym_rate:30
+bits_per_sym:4
+nPol:2
+sig_power_dbm:4.0
+channel_num:1
+modulation:1
+demodulation:1
+pulse_shaping:1
+dac:1
+transmitter:0
+wss:1
+channel_type:1
+span_num:2
+channel_space:50
+load_len:0
+span_len:80
+total_len:160
+cut_idx:0
+receiver:1
+adc:1
+lpf:1
+cdcom:1
+mimo:1
+synchronization:1
+cpe:1
+result_path:./results/infor/
+figure_path:./results/figure/
+save_data_path:./results/data/
+ch_sam_rate:120
+ch_fft_num:393216
+rx_fft_num:327680
+class_num:16
+up_sam:2.6666666666666665
+bit_num_per_pol:393216
+modulation_list:{'2': 'QPSK', '3': '8QAM', '4': '16QAM', '5': '32QAM', '6': '64QAM'}
+modulation_type:16QAM
+data_mode:fine_tune
+caclu_with_gpu:1
+device:cpu
+fig_plot_arr:[0, 0, 0, 1]
+infor_print_arr:[1, 0, 1, 1]
+save_data_arr:[0, 0, 0, 0]
+q_factor:[0. 0. 0.]
+front_sym_num:2048
+padding_num:4096
+bit_num:786432
+sym_num:196608
+sym_num_wo_padding:94208
+sym_num_per_pol:98304
+sig_power_w:0.0025118864315095794
+bit_rate:120
+infor_print:1
+fig_plot:1
+save_data:0
+sig_data_mode:numpy
+bit_load:0
+random_type:MT19937
+coding:0
+modu:qam
+geometric_shaping:0
+demod_config:{'mode': 'llr', 'data_mode': 'numpy', 'order': 16, 'device': device(type='cpu')}
+demod_obj:<IFTS.fiber_simulation.sig.modulation.demod_design.QAMDemod object at 0x000001CAC6F13850>
+rx_data_mode:tensor
+fiber_config:{'len_config_path': './span_len.yml', 'D': 17, 'S': 0, 'pmd': 1, 'alpha_inndB': 0.2, 'n2': 2.6e-20, 'Aeff': 80, 'mode': 'SSFM', 'nn_model': 'GAN2', 'args': {'step_config': {'dz_mode': 'np', 'dphimax': 0.005, 'constant_step_size': 0.01, 'total_step_num': 1000, 'nPol': 2, 'nl_gamma': 1.1710596271445823, 'alpha_loss': 0.046051701859880986, 'span_len': np.float64(80.0), 'pmd': 1, 'pmd_dz_arr': array([1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.])}, 'pmd_config': {'dgd_manual': 1, 'dgd_total': 0.2, 'psp_manual': 1, 'pmd_coeff_random': 0, 'pmd_dz_random': 0, 'pmd_coeff': 0.05, 'pmd_trunk_num': 80, 'phi': 0.7853981633974483}, 'isManakov': 1}, 'wavelength': 1550, 'beta2c': -21.682619391414896, 'beta3c': 0, 'optical_carrier': 193414.48903225808, 'alpha_indB': 0.2, 'alpha_loss': 0.046051701859880986, 'gamma': 1.3174420805376552}
+oscop_sam_num:327680
+frame_num:1
+sam_rate:100
+dt:10.0
+sym_time:33.333333333333336
+frame_sym_num:98304
+sym_simu_time:[0.00000000e+00 3.33333333e+01 6.66666667e+01 ... 3.27670000e+06
+ 3.27673333e+06 3.27676667e+06]
+sam_now:1
+lpf_config:{'mode': 'brickwall', 'args': {'roll_off': 0.1, 'max_lofo': 0.5, 'comp_s21': 0, 'filter_bw': 17.0, 'cut_off': 17.0, 's21_bw': 17.0, 's21_path': None}, 'sam_rate': 100, 'fft_num': 327680, 'data_mode': 'tensor', 'device': device(type='cpu')}
+lpf_obj:<IFTS.fiber_simulation.rx_dsp.low_pass_filter.lpf_design.LPF object at 0x000001CAC6F138E0>
+iq_balance:1
+iq_balance_config:{'type': 'GSOP'}
+iq_balance_obj:<IFTS.fiber_simulation.rx_dsp.IQ_compensation.imbalance_eq.IQ_Balance object at 0x000001CAC6F13910>
+len_array:[80. 80.]
+cd_com_config:{'type': 'FD_2x2', 'args': {'cdc_length': 160, 'cut_idx': 0}, 'sam_per_sym': 2}
+wavelength:1550
+df:[0.]
+beta0:[0.]
+beta1:[0.]
+beta2:[-21.68261939]
+beta3:0
+block_upsam:2
+cdcom_obj:<IFTS.fiber_simulation.rx_dsp.cd_compensation.cdc_design.CDC object at 0x000001CAC6F139A0>
+mimo_config:{'mode': 'TD_2x2', 'half_taps_num': 40, 'out_sym_num': 1, 'upsam': 2, 'block_size': 64, 'err_calcu': 'mean', 'data_mode': 'numpy', 'args': {'algo_type': 'mma', 'h_ortho': 0, 'tap_init_mode': 1, 'tap_init_value': 0.5, 'radius_idx': 1, 'cma_pretrain': 1, 'pre_train_iter': 2, 'train_epoch': 8, 'lr': 0.00025, 'upsam': 2, 'train_num': 81920, 'sam_num': 196608}, 'lr_optim': 'constant', 'device': device(type='cpu'), 'infor_print': 1}
+mimo_obj:<IFTS.fiber_simulation.rx_dsp.adaptive_filter.adaptive_filter_design.Vanilla object at 0x000001CAC6F137F0>
+cpe_config:{'mode': 'coarse', 'block_num': 1024, 'parallel': 64, 'window_size': 31, 'data_mode': 'numpy', 'args': {'data_aided': 1}, 'sym_rate': 30, 'parallelism': 1, 'infor_print': 1, 'device': device(type='cpu')}
+cpe_obj:<IFTS.fiber_simulation.rx_dsp.carrier_phase_estimation.cpe_design.CPE object at 0x000001CAC6F13880>
+synchron_config:{'mode': '4x4', 'corr_num': 256, 'data_mode': 'numpy', 'args': {}, 'frame_num': 1, 'frame_size': 98304, 'device': device(type='cpu')}
+synchron_obj:<IFTS.fiber_simulation.rx_dsp.synchronization.synchron_design.synchron object at 0x000001CAC6F13B50>

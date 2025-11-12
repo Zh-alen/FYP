@@ -1,0 +1,61 @@
+Simu_Para:
+  tx_sam_rate: 80                                                                             # AWG采样速率（GSam/Sec）
+  rx_sam_rate: 100                                                                            # 示波器采样速率（GSam/Sec）
+  # expriments information
+  sym_rate: 30                                                                                # 信号波特率（GHz）
+  bits_per_sym: 4                                                                             # 单符号比特数
+  nPol: 2                                                                                     # 偏振个数（固定为2）
+  sig_power_dbm : 10.0                                                                        # 入纤光功率（dbm）
+  channel_num : 1                                                                             # WDM通道数 
+  # control for sig, tx, rx
+  # sig
+  modulation : 1                                                                              # 调制开关（1 - 开，0 - 关）
+  demodulation : 1                                                                            # 解调开关（1 - 开，0 - 关）
+  # tx
+  pulse_shaping: 1                                                                            # 脉冲成型开关（1 - 开，0 - 关）
+  # ch
+  dac : 1                                                                                     # 通道重采样开关（1 - 开，0 - 关）
+  wss : 1                                                                                     # 波长选择开关（固定为1 - 开）
+  channel_type : 1                                                                            # 信道类型（1 - 仿真光纤信道, 后续开发其余类型信道）
+  span_num: 1                                                                                 # Span数量                                         
+  load_len: 0                                                                                 # 是否加载光纤设置（1: 加载设置 0: 设置固定span_len）
+  span_len : 80                                                                               # 单段光纤长度（km）                                    
+  total_len : 80                                                                              # 光纤总长度（km） 
+  channel_space : 50                                                                          # WDM通道间隔（GHz）
+  receiver : 1                                                                                # 接收端ICR开关（1 - 开，0 - 关）
+  adc : 1                                                                                     # 接收端示波器开关（1 - 开，0 - 关）                        
+
+Ch_Para:
+  wss_config:
+    filter_type: 'brickwall_filter'                                                           # 波分复用及解复用过程使用的滤波器类型（'brickwall_filter' , 'wss_filter')
+    args: {}                                                                                  # 滤波器配置参数
+  
+  edfa_config:
+    mode: 'naive_pass'                                                                        # EDFA模式（'no_noise_pass' - 仅放大信号，'naive_pass' - 放大信号同时添加ASE噪声）
+    nf_db: 5                                                                                  # EDFA噪声系数（dB）,默认值5
+      
+  icr_config:
+    args:
+      add_noise: 1                                                                            # 是否添加ICR噪声（1 - 是，0 - 否）
+      n_power_dBm: -18.6751                                                                   # ICR噪声功率（dBm），参考值-20.6751,-21.6751,-21.7
+  
+  fiber_config:
+    mode: 'NN'                                                                                # 光纤信道仿真模式（'SSFM' - 分布傅里叶法, 'NN' - AI信道模型） 
+    nn_model: 'GAN'                                                                           # AI信道模型类型（'GAN1','BiLSTM'）,信道仿真模式为'NN'时需要设置参数
+    pmd: 0
+    args: {} 
+
+Tx_Para:
+  pulse_shaping_config:
+    type: 'rrc'
+    args:
+      upsam: 4
+      roll_off: 0.1
+  
+Rx_Para:  
+  cd_com_config:                                                                              # 色散补偿配置
+    type: 'FD_2x2'                                                                            # 频域双输入双输出
+    # sam_per_sym: 2
+    args:
+      cdc_length: 'auto'
+      cut_idx: 0  
