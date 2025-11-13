@@ -1,0 +1,26 @@
+Binary Data Statistics Report
+=============================
+
+File: test_document
+Type: word
+Encoding: Basic Polar encoding (rate 1/8)
+Original Size: 111 bytes
+Encoded Bits: 7104
+Coding Rate: 0.1250
+
+Bit Distribution:
+  Zeros: 3688 (0.5191)
+  Ones: 3416 (0.4809)
+
+Run Length Statistics:
+  Average run length: 1.92
+  Longest run: 7
+  Shortest run: 1
+  Total runs: 3697
+
+Available Encoding Methods:
+  - direct_binary
+  - manchester
+  - nrzi
+  - hamming_74
+  - polar_basic

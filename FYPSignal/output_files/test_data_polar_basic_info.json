@@ -1,0 +1,12 @@
+{
+  "file_name": "test_data.xlsx",
+  "file_type": "excel",
+  "file_size_bytes": 61,
+  "total_bits": 3904,
+  "encoding_method": "polar_basic",
+  "encoding_info": "Basic Polar encoding (rate 1/8)",
+  "binary_shape": [
+    3904
+  ],
+  "binary_dtype": "int32"
+}

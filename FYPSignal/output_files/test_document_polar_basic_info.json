@@ -1,0 +1,12 @@
+{
+  "file_name": "test_document.docx",
+  "file_type": "word",
+  "file_size_bytes": 111,
+  "total_bits": 7104,
+  "encoding_method": "polar_basic",
+  "encoding_info": "Basic Polar encoding (rate 1/8)",
+  "binary_shape": [
+    7104
+  ],
+  "binary_dtype": "int32"
+}
